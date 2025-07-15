@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://5m381db384fw"]
+
+[node name="SelectCharacter" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 378.0
+offset_top = 216.0
+offset_right = 434.0
+offset_bottom = 247.0
+text = "Ducky"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 535.0
+offset_top = 217.0
+offset_right = 592.0
+offset_bottom = 248.0
+text = "Flucky"
