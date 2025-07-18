@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="Character" load_steps=2 format=3 uid="uid://cfg21y3xb7ri5"]
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://cfg21y3xb7ri5"]
 
+[ext_resource type="SpriteFrames" uid="uid://dttcp1i0xdmbi" path="res://resources/Ducky/Ducky_frames.tres" id="1_e1wlp"]
 [ext_resource type="Script" uid="uid://g6guivahp5f2" path="res://resources/character.gd" id="1_qf2gs"]
 
 [resource]
 script = ExtResource("1_qf2gs")
+animations = ExtResource("1_e1wlp")
 power = 4
 speed = 5
 max_health = 100

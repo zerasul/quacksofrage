@@ -1,15 +1,61 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhhttv1kc8oi3"]
+[gd_scene load_steps=7 format=3 uid="uid://dhhttv1kc8oi3"]
 
 [ext_resource type="Script" uid="uid://d0nn7rnpoxfma" path="res://scenes/player/player.gd" id="1_8afob"]
+[ext_resource type="SpriteFrames" uid="uid://dttcp1i0xdmbi" path="res://resources/Ducky/Ducky_frames.tres" id="2_dovo2"]
+[ext_resource type="Resource" uid="uid://cfg21y3xb7ri5" path="res://resources/Ducky/ducky.tres" id="2_lvxji"]
+[ext_resource type="Texture2D" uid="uid://b73sdyjnx1npo" path="res://assets/sprites/objects/player-marker.png" id="3_gmlin"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x7p2l"]
+size = Vector2(15, 15)
 
-[node name="Player" type="Area2D"]
+[sub_resource type="LabelSettings" id="LabelSettings_lvxji"]
+
+[node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_8afob")
+character = ExtResource("2_lvxji")
 health = 100
 special = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_dovo2")
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 5.5)
 shape = SubResource("RectangleShape2D_x7p2l")
+
+[node name="marcador" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -11.0
+offset_top = -32.0
+offset_right = -11.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="marcador"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -16.0
+offset_right = 22.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="marcador/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "1P"
+label_settings = SubResource("LabelSettings_lvxji")
+
+[node name="TextureRect" type="TextureRect" parent="marcador/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_gmlin")
+expand_mode = 4
