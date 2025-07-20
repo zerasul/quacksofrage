@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const DEFAULT_SPEED:int = 100.0
+const DEFAULT_SPEED:float = 100.0
 
 @export_category("Resource")
 @export
@@ -10,18 +10,19 @@ var character:Character
 @export
 var health:int
 
-@export
+
 var score:int
 
 var speed: int 
 @export
 var special:int
 
+@export_category("Player")
 @export
 var player_n:int = 1
 
-var attack_combo:int = 0
-
+var isAttacking:bool = false
+var attack_combo:int =0
 
 
 
@@ -33,44 +34,55 @@ func _ready():
 	$AnimatedSprite2D.sprite_frames= character.animations
 	$AnimatedSprite2D.play("idle")
 	$marcador/VBoxContainer/Label.text="%s P"%player_n
+	$marcador/disableMarker.start()
 
-func _process(delta: float) -> void:
-	var vel:Vector2 = Vector2.ZERO
-	if player_n == 1:
-		vel=_process_p1(delta)
-	else:
-		vel=_process_p2(delta)
-
-	velocity = vel * speed
+func _physics_process(delta: float) -> void:
+	handleInput()
 	move_and_slide()
+	updateAnimations()
+	
+
+func attack()->void:
+	isAttacking=true
+	match  attack_combo:
+		0:
+			$AnimatedSprite2D.play("attack1")
+		1:
+			$AnimatedSprite2D.play("attack2")
+		2:
+			$AnimatedSprite2D.play("attack3")
+	await $AnimatedSprite2D.animation_finished
+	isAttacking=false
+	attack_combo=attack_combo+1
+	attack_combo%=3
 
 
-func _process_p1(delta:float)->Vector2:
-	var vel:Vector2 = Vector2.ZERO
-	if Input.is_action_pressed("p1_move_down"):
-		vel.y=1
-	if Input.is_action_pressed("p1_move_up"):
-		vel.y=-1
-	if Input.is_action_pressed("p1_move_rigth"):
-		vel.x=1
-		$AnimatedSprite2D.flip_h=false
-	if Input.is_action_pressed("p1_move_left"):
-		vel.x=-1
-		$AnimatedSprite2D.flip_h=true
-	return vel
+
+func handleInput():
+	var moveDirection=0
+	if player_n==1:
+		moveDirection = Input.get_vector("p1_move_left","p1_move_rigth","p1_move_up","p1_move_down")
+		if Input.is_action_just_pressed("p1_attack_a") and not isAttacking:
+			attack()
+	elif player_n==2:
+		moveDirection = Input.get_vector("p2_move_left","p2_move_rigth","p2_move_up","p2_move_down")
+		if Input.is_action_just_pressed("p2_attack_a") and not isAttacking:
+			attack()
+	velocity = moveDirection * speed
+
+func updateAnimations()->void:
+	if isAttacking:
+		return
+	if velocity.length()==0:
+		$AnimatedSprite2D.play("idle")
+	else:
+		$AnimatedSprite2D.play("walk")
+		if velocity.x<0:
+			$AnimatedSprite2D.flip_h=true
+		elif velocity.x>0:
+			$AnimatedSprite2D.flip_h=false
 
 
-func _process_p2(delta:float)->Vector2:
-	var vel:Vector2 = Vector2.ZERO
-	if Input.is_action_pressed("p2_move_down"):
-		vel.y=1
-	if Input.is_action_pressed("p2_move_up"):
-		vel.y=-1
-	if Input.is_action_pressed("p2_move_rigth"):
-		vel.x=1
-		$AnimatedSprite2D.flip_h=false
-	if Input.is_action_pressed("p2_move_left"):
-		vel.x=-1
-		$AnimatedSprite2D.flip_h=true
-		
-	return vel
+
+func _on_disable_marker_timeout() -> void:
+	$marcador.visible=false 

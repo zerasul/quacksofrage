@@ -1,0 +1,97 @@
+[gd_resource type="SpriteFrames" load_steps=12 format=3 uid="uid://nor787t502jc"]
+
+[ext_resource type="Texture2D" uid="uid://utwrcllm86kr" path="res://assets/sprites/enemies/frog_green_spritesheet.png" id="1_aiprw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xh8g"]
+atlas = ExtResource("1_aiprw")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83ukk"]
+atlas = ExtResource("1_aiprw")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40kq3"]
+atlas = ExtResource("1_aiprw")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sah6w"]
+atlas = ExtResource("1_aiprw")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dsfef"]
+atlas = ExtResource("1_aiprw")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytxyf"]
+atlas = ExtResource("1_aiprw")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6j2x"]
+atlas = ExtResource("1_aiprw")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4qey8"]
+atlas = ExtResource("1_aiprw")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aiprw"]
+atlas = ExtResource("1_aiprw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxe38"]
+atlas = ExtResource("1_aiprw")
+region = Rect2(0, 32, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6xh8g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83ukk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40kq3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sah6w")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dsfef")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ytxyf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6j2x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4qey8")
+}],
+"loop": true,
+"name": &"croak",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aiprw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxe38")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aiprw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aiprw")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]

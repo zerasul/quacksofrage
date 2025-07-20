@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmeav0ca7ausw"]
+
+[ext_resource type="SpriteFrames" uid="uid://nor787t502jc" path="res://resources/enemies/frog/frog_frames.tres" id="1_sjakr"]
+[ext_resource type="Script" uid="uid://ccnlvfwdteoxo" path="res://scenes/enemy/enemy.gd" id="1_vwhkw"]
+[ext_resource type="Resource" uid="uid://pfoupbn5awgf" path="res://resources/enemies/frog/Frog.tres" id="2_6l0n6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xu5e0"]
+size = Vector2(11, 9)
+
+[node name="Enemy" type="CharacterBody2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_vwhkw")
+foe = ExtResource("2_6l0n6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_sjakr")
+animation = &"idle"
+frame = 1
+frame_progress = 0.176286
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 2.5)
+shape = SubResource("RectangleShape2D_xu5e0")

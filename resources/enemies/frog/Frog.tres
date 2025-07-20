@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Foe" load_steps=3 format=3 uid="uid://pfoupbn5awgf"]
+
+[ext_resource type="SpriteFrames" uid="uid://nor787t502jc" path="res://resources/enemies/frog/frog_frames.tres" id="1_citle"]
+[ext_resource type="Script" uid="uid://d0teuhx1ukre8" path="res://resources/foe.gd" id="1_n3lfq"]
+
+[resource]
+script = ExtResource("1_n3lfq")
+animations = ExtResource("1_citle")
+max_health = 40
+speed = 2
+power = 2
+metadata/_custom_type_script = "uid://d0teuhx1ukre8"
